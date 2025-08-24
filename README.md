@@ -9,3 +9,13 @@ SELECT
     (SELECT customer_id FROM orders WHERE orders.id= order_details.order_id) as customer_id
 FROM mydb.order_details;
 ```
+
+## 2. Nested query in WHERE operator
+
+```
+USE mydb;
+
+SELECT *
+FROM order_details
+WHERE 3 = (SELECT shipper_id from orders WHERE orders.id = order_details.order_id)
+```
