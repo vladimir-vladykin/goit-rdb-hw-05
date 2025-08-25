@@ -19,3 +19,13 @@ SELECT *
 FROM order_details
 WHERE 3 = (SELECT shipper_id from orders WHERE orders.id = order_details.order_id)
 ```
+
+## 3. Nested query in FROM operator
+
+```
+USE mydb;
+
+SELECT temp.order_id, AVG(temp.quantity) as average_quantity
+FROM (SELECT * FROM order_details WHERE quantity > 10) as temp
+GROUP BY order_id
+```
