@@ -29,3 +29,18 @@ SELECT temp.order_id, AVG(temp.quantity) as average_quantity
 FROM (SELECT * FROM order_details WHERE quantity > 10) as temp
 GROUP BY order_id
 ```
+
+## 4. Nested query in WITH operator
+
+```
+USE mydb;
+
+WITH temp AS (
+	SELECT * 
+    FROM order_details
+    WHERE quantity > 10
+)
+SELECT order_id, AVG(quantity) as average_quantity
+FROM temp
+GROUP BY order_id
+```
